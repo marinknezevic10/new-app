@@ -1,6 +1,6 @@
 import React from "react";
 import App from "./App.js";
-import { ReactDOM } from "react-router";
+import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
