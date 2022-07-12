@@ -6,7 +6,7 @@ import classes from "./Navigation.module.css";
 function Navigation() {
   return (
     <header className={classes.header}>
-      <div>
+      <div className={classes.logo}>
         <h1>Meetups</h1>
       </div>
       <nav>
