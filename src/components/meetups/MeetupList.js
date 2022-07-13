@@ -1,6 +1,6 @@
 import MeetupItem from "./MeetupItem";
 import classes from "./MeetupList.module.css";
-
+import React from "react";
 //mapping every meetup into another object
 //{props.meetups.map(meetup => <MeetupItem/>)} transforming every meetup into a meetup item
 //destructuring

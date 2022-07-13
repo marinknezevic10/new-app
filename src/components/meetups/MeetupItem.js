@@ -1,5 +1,5 @@
-import classess from "./MeetupItem.module.css";
-
+import classes from "./MeetupItem.module.css";
+import React from "react";
 //using props to gather data one by one
 //using props to pass data from one component to another
 function MeetupItem(props) {

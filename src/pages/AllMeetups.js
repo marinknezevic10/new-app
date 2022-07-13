@@ -1,6 +1,6 @@
 //page for listing all meetups
 import React from "react";
-
+import MeetupList from "../components/meetups/MeetupList";
 //using 'dummy data' just to list from 'api'
 const DUMMY_DATA = [
   {
@@ -24,15 +24,13 @@ const DUMMY_DATA = [
 ];
 
 //built in js, "map" component allows us to execute a function one every element in an array transform the data and then return the transformed data in a new array
-
+//important to add meetups props because we are expecting it inside of the component in the meetuplist file
 function AllMeetups() {
   return (
     <section>
-      <h1>Meetups</h1>
+      <h1> All meetups</h1>
       <ul>
-        {DUMMY_DATA.map((meetup) => {
-          return <li key={meetup.id}>{meetup.title}</li>;
-        })}
+        <MeetupList meetups={DUMMY_DATA} />
       </ul>
     </section>
   );
