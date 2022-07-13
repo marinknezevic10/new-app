@@ -10,7 +10,7 @@ import { useRef } from "react";
 //htmlfor as a prop
 //to listen to the form submission we use onSubmit
 
-function NewMeetupForm() {
+function NewMeetupForm(props) {
   //this const establishes the connection and will give us access to the input element through the input element(title) through this ref object
   const titleInputRef = useRef();
   const imageInputRef = useRef();
@@ -37,7 +37,7 @@ function NewMeetupForm() {
       description: enteredDescription,
     };
 
-    console.log(meetupData);
+    props.onAddMeetup(meetupData);
   }
 
   return (
