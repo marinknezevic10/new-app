@@ -4,11 +4,15 @@ import classes from "./NewMeetupForm.module.css";
 import React from "react";
 
 //htmlfor as a prop
+//to listen to the form submission we use onSubmit
 
 function NewMeetupForm() {
+  //this function should be trigger when the submit event occures
+  function Submit() {}
+
   return (
     <Card>
-      <form className={classes.form}>
+      <form className={classes.form} onSubmit={Submit}>
         <div className={classes.control}>
           <label htmlFor="title">Meetup title</label>
           <input type="text" required id="title" />
