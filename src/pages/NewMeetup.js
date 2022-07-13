@@ -5,7 +5,7 @@ function NewMeetup() {
   return (
     <section>
       <h1>New meetup</h1>
-      <NewMeetup />
+      <NewMeetupForm />
     </section>
   );
 }
