@@ -4,6 +4,7 @@ import classes from "./NewMeetupForm.module.css";
 import React from "react";
 
 //useRef hook is a great tool to persist data between renders without causing a rerender(ponovno učitavanje)
+//ref is very usefull tool for reading values
 import { useRef } from "react";
 
 //htmlfor as a prop
@@ -12,6 +13,9 @@ import { useRef } from "react";
 function NewMeetupForm() {
   //this const establishes the connection and will give us access to the input element through the input element(title) through this ref object
   const titleInputRef = useRef();
+  const imageInputRef = useRef();
+  const addressInputRef = useRef();
+  const descriptionInputRef = useRef();
 
   //this function should be trigger when the submit event occures
   function Submit(event) {
@@ -19,7 +23,21 @@ function NewMeetupForm() {
     event.preventDefault();
 
     //reading the entered values
+    //extracting all the entered values into the submit function
     const enteredTitle = titleInputRef.current.value;
+    const enteredImage = imageInputRef.current.value;
+    const enteredAddress = addressInputRef.current.value;
+    const enteredDescription = descriptionInputRef.current.value;
+
+    //storing all the entered data into object
+    const meetupData = {
+      title: enteredTitle,
+      image: enteredImage,
+      address: enteredAddress,
+      description: enteredDescription,
+    };
+
+    console.log(meetupData);
   }
 
   return (
@@ -31,15 +49,20 @@ function NewMeetupForm() {
         </div>
         <div className={classes.control}>
           <label htmlFor="image">Meetup image</label>
-          <input type="url" required id="image" />
+          <input type="url" required id="image" ref={imageInputRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor="address">Meetup address</label>
-          <input type="text" required id="address" />
+          <input type="text" required id="address" ref={addressInputRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor="description">Meetup description</label>
-          <textarea id="description" required rows="5"></textarea>
+          <textarea
+            id="description"
+            required
+            rows="5"
+            ref={descriptionInputRef}
+          ></textarea>
         </div>
         <div className={classes.actions}>
           <button>Add meetup</button>
