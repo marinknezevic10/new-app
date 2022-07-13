@@ -4,7 +4,7 @@ import classes from "./NewMeetupForm.module.css";
 import React from "react";
 
 //useRef hook is a great tool to persist data between renders without causing a rerender(ponovno učitavanje)
-//ref is very usefull tool for reading values
+//ref is very useful tool for reading values
 import { useRef } from "react";
 
 //htmlfor as a prop
