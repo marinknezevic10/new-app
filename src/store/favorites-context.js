@@ -19,12 +19,14 @@ function FavoritesContextProvider(props) {
   }
 
   function removeFavorite(meetupId) {
-    setUserFavorites(prevUserFavorites= >{
-        return prevUserFavorites.filter();
+    setUserFavorites(prevUserFavorites => {
+        return prevUserFavorites.filter(meetup => meetup.id !== meetupId);
     })
   }
 
-  function itemIsFavorite() {}
+  function itemIsFavorite(meetupId) {
+    return userFavorites.some(meetup => meetup.id === meetupId);
+  }
 
   const context = {
     favorites: userFavorites,
