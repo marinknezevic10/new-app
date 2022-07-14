@@ -4,6 +4,10 @@ import { createContext, useState } from "react";
 const FavoritesContext = createContext({
   favorites: [],
   totalFavorites: 0,
+  addFavorite: (favoriteMeetup) => {},
+  removeFavorite: (meetupId) => {},
+  itemIsFavorite: (meetupId) => {}
+
 });
 
 //this component will have a job of providing this context to all the components that are interested in listenin to the provided values
