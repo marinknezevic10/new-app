@@ -1,7 +1,8 @@
 //page for listing all meetups
 import React from "react";
 import MeetupList from "../components/meetups/MeetupList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+//useeffect is a hook that allows you to run some code under certain conditions
 
 function AllMeetups() {
   //isloading element is a function for updating the state
@@ -19,16 +20,30 @@ function AllMeetups() {
   //response.json gives us access to that data automatically converted from json to js object
   //json will return promise so we need to add antoher then block where we can get the actual data
   //react components must not return a promise but instead directly return jsx
-  fetch("https://react-data-42ad1-default-rtdb.firebaseio.com/meetups.json")
-    .then((response) => {
-      response.json();
-    })
+  //below we have a problem of infinite loop meaning this fetch component runs everytime when the component function runs with useeffect we are able to restrict this and set a condition when to run it
 
-    //we start in loading state and we set it to false once we have the data
-    .then((data) => {
-      isLoading(false);
-      setLoadedMeetups(data);
-    });
+  useEffect(() => {
+    isLoading(true);
+    fetch("https://react-data-42ad1-default-rtdb.firebaseio.com/meetups.json")
+      .then((response) => {
+        return response.json();
+      })
+
+      //we start in loading state and we set it to false once we have the data
+      .then((data) => {
+        //we want to transform the data from object to an array to avoid errors
+        const meetups = [];
+        for (const key in data) {
+          const meetup = {
+            id: key,
+            ...data[key],
+          };
+          meetups.push(meetup);
+        }
+        isLoading(false);
+        setLoadedMeetups(meetups);
+      });
+  }, []);
 
   //if we are loading we want to return another piece of jsx code
   if (loading) {
