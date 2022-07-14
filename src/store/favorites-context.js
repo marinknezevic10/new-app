@@ -31,6 +31,9 @@ function FavoritesContextProvider(props) {
   const context = {
     favorites: userFavorites,
     totalFavorites: userFavorites.length,
+    favorite: addFavorite
+    deleteFavorite: removeFavorite
+    isFavorite: itemIsFavorite
   };
 
   return (
