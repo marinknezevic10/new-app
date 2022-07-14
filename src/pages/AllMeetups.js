@@ -23,9 +23,21 @@ const DUMMY_DATA = [
   },
 ];
 
-//built in js, "map" component allows us to execute a function one every element in an array transform the data and then return the transformed data in a new array
-//important to add meetups props because we are expecting it inside of the component in the meetuplist file
 function AllMeetups() {
+  //loading data we submitted on the firebase
+  //we need to send http request
+  //we want to send the request whenever we visit this page
+  //get request sent by default
+  //fetch returns a promise because of this we use then method
+  //response.json gives us access to that data automatically converted from json to js object
+  //json will return promise so we need to add antoher then block where we can get the actual data
+  //react components must not return a promise but instead directly return jsx
+  fetch("https://react-data-42ad1-default-rtdb.firebaseio.com/meetups.json")
+    .then((response) => {
+      response.json();
+    })
+    .then((data) => {});
+
   return (
     <section>
       <h1> All meetups</h1>
