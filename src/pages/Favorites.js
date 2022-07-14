@@ -4,7 +4,7 @@ import FavoritesContext from "../store/favorites-context";
 import MeetupList from "../components/meetups/MeetupList";
 //outputting favorites on the page
 //we are using usecontext because we want to output all the favorites from our context
-
+//as long as we stay on the page and navigate throught it our favorites dont get lost but if we refresh the page our favorites dissapear, this happens because using context our data stores only in memory cause we only are working with state and constants
 function Favorites() {
   const favoritesCtx = useContext(FavoritesContext);
 
