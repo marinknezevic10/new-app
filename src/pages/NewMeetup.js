@@ -1,7 +1,9 @@
 import React from "react";
 import NewMeetupForm from "../components/meetups/NewMeetupForm";
+import { useHistory } from "react-router-dom";
 //storing the data on the server a little bit of backend
 function NewMeetup() {
+  const history = useHistory();
   //sending the http request to a backend
   function addMeetup(meetupData) {
     //fetch default js function allows us to send http requests
@@ -20,6 +22,10 @@ function NewMeetup() {
       headers: {
         "Content-Type": "aplication/json",
       },
+      //coding below navigate us after we submit the form
+      //history.replace we navigate to starting page
+    }).then(() => {
+      history.replace("/");
     });
   }
   return (
