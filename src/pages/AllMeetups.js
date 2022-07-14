@@ -2,27 +2,6 @@
 import React from "react";
 import MeetupList from "../components/meetups/MeetupList";
 import { useState } from "react";
-//using 'dummy data' just to list from 'api'
-const DUMMY_DATA = [
-  {
-    id: "m1",
-    title: "This is a first meetup",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg",
-    address: "Meetupstreet 5, 12345 Meetup City",
-    description:
-      "This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!",
-  },
-  {
-    id: "m2",
-    title: "This is a second meetup",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg",
-    address: "Meetupstreet 5, 12345 Meetup City",
-    description:
-      "This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!",
-  },
-];
 
 function AllMeetups() {
   //isloading element is a function for updating the state
@@ -30,6 +9,7 @@ function AllMeetups() {
   //loading element is a current state snapshot
 
   const [loading, isLoading] = useState(true);
+  const [loadedMeetups, setLoadedMeetups] = useState([]);
 
   //loading data we submitted on the firebase
   //we need to send http request
@@ -47,6 +27,7 @@ function AllMeetups() {
     //we start in loading state and we set it to false once we have the data
     .then((data) => {
       isLoading(false);
+      setLoadedMeetups(data);
     });
 
   //if we are loading we want to return another piece of jsx code
@@ -63,7 +44,7 @@ function AllMeetups() {
     <section>
       <h1> All meetups</h1>
       <ul>
-        <MeetupList meetups={DUMMY_DATA} />
+        <MeetupList meetups={loadedMeetups} />
       </ul>
     </section>
   );
