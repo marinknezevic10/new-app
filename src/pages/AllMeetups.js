@@ -1,6 +1,7 @@
 //page for listing all meetups
 import React from "react";
 import MeetupList from "../components/meetups/MeetupList";
+import { useState } from "react";
 //using 'dummy data' just to list from 'api'
 const DUMMY_DATA = [
   {
@@ -24,6 +25,12 @@ const DUMMY_DATA = [
 ];
 
 function AllMeetups() {
+  //isloading element is a function for updating the state
+  //usestate always returns an array with two elements
+  //loading element is a current state snapshot
+
+  const [loading, isLoading] = useState(true);
+
   //loading data we submitted on the firebase
   //we need to send http request
   //we want to send the request whenever we visit this page
@@ -36,8 +43,22 @@ function AllMeetups() {
     .then((response) => {
       response.json();
     })
-    .then((data) => {});
 
+    //we start in loading state and we set it to false once we have the data
+    .then((data) => {
+      isLoading(false);
+    });
+
+  //if we are loading we want to return another piece of jsx code
+  if (loading) {
+    return (
+      <section>
+        <p>Loading...</p>
+      </section>
+    );
+  }
+
+  //we only return the actual meetup list if we're done loading
   return (
     <section>
       <h1> All meetups</h1>
